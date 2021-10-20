@@ -1,0 +1,7 @@
+build
+.serverless_nextjs
+.next
+node_modules
+builds
+out
+pages/api/*
