@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint '*/**/*.{js,ts,tsx}' --fix",
+    "lint": "eslint --fix",
     "prettier": "prettier --single-quote --write './**/*.{ts,tsx,js,css}'",
     "prepare": "husky install"
   },
@@ -16,7 +16,8 @@
     "@emotion/styled": "^11.3.0",
     "next": "11.1.2",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-query": "^3.27.0"
   },
   "devDependencies": {
     "@types/react": "17.0.25",
