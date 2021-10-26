@@ -1,7 +1,13 @@
 import type { AppProps } from 'next/app'
 import { ReactElement } from 'react'
+import { Header } from '../components/common'
 
 function MyApp({ Component, pageProps }: AppProps): ReactElement {
-  return <Component {...pageProps} />
+  return (
+    <>
+      <Header />
+      <Component {...pageProps} />
+    </>
+  )
 }
 export default MyApp
