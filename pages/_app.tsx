@@ -28,4 +28,5 @@ function MyApp({ Component, pageProps }: AppProps): ReactElement {
     </div>
   )
 }
+
 export default MyApp
