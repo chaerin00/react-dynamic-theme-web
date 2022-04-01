@@ -1,29 +1,34 @@
-const color = {
-  primary: '#FDCB02',
-  primary_light: '#FFE371',
-  primary_lighter: '#FFEEBA',
-  primary_soft: '#F8D05F',
-  primary_dark: '#FCB34A',
-  primary_darker: '#F29C4A',
-  white: '#FFFFFF',
-  lightgray1: '#F8F7F6',
-  lightgray2: '#DFDFDF',
-  gray1: '#C1C1C1',
-  gray2: '#A5A5A5',
-  gray3: '#6F6F6F',
-  darkgray1: '#3D3D3D',
-  darkgray2: '#1A1A1A',
-  darkgray3: '#797979',
-  black: '#000000',
-  bg_yellow: '#FFFCF1',
-  bg_gray: '#F8F8F8',
-  bg_sky: '#F0F8FE',
-  sky_blue: '#73ACFF',
-  marine_blue: '#3C89FF',
-  mina_blue: '#296CE1',
-  deep_blue: '#0E57E2',
-  honest_blue: '#003089',
-  error_red: '#F2754E',
-}
+import { css } from '@emotion/react'
 
-export default color
+const palette = css`
+  :root {
+    --main: #ff0000;
+    --primary: #fdcb02;
+    --primary_light: #ffe371;
+    --primary_lighter: #ffeeba;
+    --primary_soft: #f8d05f;
+    --primary_dark: #fcb34a;
+    --primary_darker: #f29c4a;
+    --white: #ffffff;
+    --lightgray1: #f8f7f6;
+    --lightgray2: #dfdfdf;
+    --gray1: #c1c1c1;
+    --gray2: #a5a5a5;
+    --gray3: #6f6f6f;
+    --darkgray1: #3d3d3d;
+    --darkgray2: #1a1a1a;
+    --darkgray3: #797979;
+    --black: #000000;
+    --bg_yellow: #fffcf1;
+    --bg_gray: #f8f8f8;
+    --bg_sky: #f0f8fe;
+    --sky_blue: #73acff;
+    --marine_blue: #3c89ff;
+    --mina_blue: #296ce1;
+    --deep_blue: #0e57e2;
+    --honest_blue: #003089;
+    --error_red: #f2754e;
+  }
+`
+
+export default palette
