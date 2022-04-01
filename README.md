@@ -1,1 +1,1 @@
-# TAKEUS-FRONT-MOBILE
+# React 테마 동적 적용 웹페이지
