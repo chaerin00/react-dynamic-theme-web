@@ -9,6 +9,7 @@ const Home: NextPage = (): ReactElement => {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  console.log(req.headers.referer)
   const isLocalhost = req.headers.referer?.includes('localhost')
   const referer = isLocalhost
     ? 'https://ssocrates.dev.ara.live'

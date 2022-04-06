@@ -1,13 +1,11 @@
 import styled from '@emotion/styled'
-import { MenuIcon, Logo } from '@assets/common'
+import { MenuIcon } from '@assets/common'
 import Router from 'next/router'
 import { useState } from 'react'
 
 const Header = () => {
   const [isLogin, setIsLogin] = useState<boolean>(
-    typeof window !== 'undefined'
-      ? !!localStorage.getItem('x-access-token')
-      : false
+    typeof window !== 'undefined' && !!localStorage.getItem('x-access-token')
   )
   const clickLogin = () => {
     Router.push('/login')
@@ -18,7 +16,7 @@ const Header = () => {
   return (
     <HeaderWrap>
       <MenuIcon />
-      <Logo onClick={clickLogo} />
+      <Logo onClick={clickLogo}>쏘크라테스 떡볶이</Logo>
       {isLogin ? (
         <div>done</div>
       ) : (
@@ -33,20 +31,24 @@ const HeaderWrap = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2.1rem;
+  padding: 0 21px;
   width: 100%;
-  height: 5rem;
+  height: 50px;
   background-color: var(--white);
 `
 
 const LoginButton = styled.button`
-  width: 5.7rem;
+  width: 57px;
   border: 1px solid var(--black);
   border-radius: 4px;
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
   color: #1a1a1a;
+`
+
+const Logo = styled.span`
+  font-size: 14px;
 `
 
 export default Header

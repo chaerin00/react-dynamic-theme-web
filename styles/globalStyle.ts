@@ -10,7 +10,6 @@ const globalStyle = css`
   body {
     padding: 0;
     margin: 0;
-    font-size: 10px;
     font-family: 'Noto Sans KR';
   }
 

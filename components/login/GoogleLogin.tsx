@@ -42,14 +42,14 @@ const GoogleLoginButton = ({ postAccessToken }: GoogleLoginButtonProps) => {
 }
 
 const Button = styled.button`
-  width: 33.4rem;
+  width: 334px;
   cursor: pointer;
   background-color: var(--white);
-  border-radius: 2.7rem;
+  border-radius: 27px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem 0;
+  padding: 10px 0;
 `
 
 export default GoogleLoginButton
