@@ -1,59 +1,34 @@
 import styled from '@emotion/styled'
 import { MenuIcon } from '@assets/common'
-import Router from 'next/router'
-import { useState } from 'react'
-import { Theme } from 'lib/api/theme'
 
 type HeaderProps = {
-  theme: Theme
+  name: string
 }
 
-const Header = ({ theme }: HeaderProps) => {
-  const [isLogin, setIsLogin] = useState<boolean>(
-    typeof window !== 'undefined' && !!localStorage.getItem('x-access-token')
-  )
-
-  const clickLogin = () => {
-    Router.push('/login')
-  }
-
-  const clickLogo = () => {
-    Router.push('/')
-  }
-
-  console.log(theme)
+const Header = ({ name }: HeaderProps) => {
   return (
     <HeaderWrap>
-      <MenuIcon />
-      <Logo onClick={clickLogo}>쏘크라테스 떡볶이</Logo>
-      {isLogin ? (
-        <div>done</div>
-      ) : (
-        <LoginButton onClick={clickLogin}>로그인</LoginButton>
-      )}
+      <MenuIcon color="var(--white)" />
+      <Logo>{name}</Logo>
     </HeaderWrap>
   )
 }
 
 const HeaderWrap = styled.header`
-  position: fixed;
+  position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 0 21px;
   width: 100%;
   height: 50px;
-  background-color: var(--white);
-`
-
-const LoginButton = styled.button`
-  width: 57px;
-  border: 1px solid var(--black);
-  border-radius: 4px;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  color: #1a1a1a;
+  background-color: var(--main);
+  color: var(--white);
+  svg {
+    position: absolute;
+    left: 3%;
+    stroke: var(--white);
+  }
 `
 
 const Logo = styled.span`
