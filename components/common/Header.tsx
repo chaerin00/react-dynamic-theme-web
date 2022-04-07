@@ -31,7 +31,7 @@ const Header = ({ theme }: HeaderProps) => {
 }
 
 const HeaderWrap = styled.header`
-  position: fixed;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
