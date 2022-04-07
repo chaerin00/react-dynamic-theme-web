@@ -12,6 +12,7 @@ const Home: NextPage<Props> = ({ theme }): ReactElement => {
   return (
     <div>
       <Header theme={theme} />
+      {/* <MainLogo/> */}
     </div>
   )
 }

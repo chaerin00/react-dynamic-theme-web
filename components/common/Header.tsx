@@ -24,13 +24,8 @@ const Header = ({ theme }: HeaderProps) => {
   console.log(theme)
   return (
     <HeaderWrap>
-      <MenuIcon />
+      <MenuIcon color="var(--white)" />
       <Logo onClick={clickLogo}>쏘크라테스 떡볶이</Logo>
-      {isLogin ? (
-        <div>done</div>
-      ) : (
-        <LoginButton onClick={clickLogin}>로그인</LoginButton>
-      )}
     </HeaderWrap>
   )
 }
@@ -38,12 +33,18 @@ const Header = ({ theme }: HeaderProps) => {
 const HeaderWrap = styled.header`
   position: fixed;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 0 21px;
   width: 100%;
   height: 50px;
-  background-color: var(--white);
+  background-color: var(--main);
+  color: var(--white);
+  svg {
+    position: absolute;
+    left: 3%;
+    stroke: var(--white);
+  }
 `
 
 const LoginButton = styled.button`
