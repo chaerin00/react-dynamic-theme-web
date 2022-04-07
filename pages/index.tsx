@@ -3,6 +3,7 @@ import { ReactElement } from 'react'
 import { Header } from '@components/common'
 import { fetchTheme, Theme } from 'lib/api/theme'
 import { GetServerSideProps } from 'next'
+import { useGetTheme } from 'hooks/query/useGetTheme'
 
 type Props = {
   theme: Theme
@@ -21,10 +22,10 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const referer = isLocalhost
     ? process.env.NEXT_PUBLIC_TEST_URL
     : req.headers.referer
-  const result = await fetchTheme(referer || '')
+  const theme = await fetchTheme(referer || '')
   return {
     props: {
-      theme: result,
+      theme,
     },
   }
 }

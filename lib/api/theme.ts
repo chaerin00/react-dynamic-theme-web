@@ -36,6 +36,7 @@ export type Theme = {
 
 export const fetchTheme = async (referer: string) => {
   try {
+    console.log(axios.request)
     const { data } = await axios.get<Theme>(
       process.env.NEXT_PUBLIC_THEME_API as string,
       {
