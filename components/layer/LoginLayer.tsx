@@ -41,24 +41,24 @@ const LoginLayerWrap = styled.div`
 `
 const PrevButton = styled.button`
   position: absolute;
-  left: 1.1rem;
-  top: 5.3rem;
+  left: 11px;
+  top: 53px;
 `
 const Title = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 8.5rem;
+  margin-top: 85px;
   & > h1 {
     text-align: center;
     color: var(--white);
     font-style: normal;
     font-weight: 500;
-    font-size: 1.4rem;
+    font-size: 14px;
     line-height: 147%;
   }
 `
 const ButtonWrap = styled.section`
   position: absolute;
-  bottom: 6.4rem;
+  bottom: 64px;
 `
