@@ -9,10 +9,9 @@ const Home: NextPage = (): ReactElement => {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  console.log(req.headers.referer)
   const isLocalhost = req.headers.referer?.includes('localhost')
   const referer = isLocalhost
-    ? 'https://ssocrates.dev.ara.live'
+    ? process.env.NEXT_PUBLIC_TEST_URL
     : req.headers.referer
   const result = await fetchTheme(referer || '')
   console.log(result)

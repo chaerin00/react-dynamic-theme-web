@@ -37,7 +37,7 @@ export type ThemeResponse = {
 export const fetchTheme = async (referer: string) => {
   try {
     const { data } = await axios.get<ThemeResponse>(
-      'https://mdvelhd113.execute-api.ap-northeast-2.amazonaws.com/develop/web/theme',
+      process.env.NEXT_PUBLIC_THEME_API as string,
       {
         headers: {
           referer,
