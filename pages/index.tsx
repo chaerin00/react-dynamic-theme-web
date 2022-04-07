@@ -4,12 +4,17 @@ import { Header } from '@components/common'
 import { fetchTheme, Theme } from 'lib/api/theme'
 import MainLogo from '@components/store/list/MainLogo'
 import { Global, css } from '@emotion/react'
+import { fetchStoreList, Store } from 'lib/api/store'
+import { useGetStoreList } from 'hooks/query/useGetStoreList'
 
 type Props = {
   theme: Theme
+  storeList: Store[]
 }
 
-const Home: NextPage<Props> = ({ theme }): ReactElement => {
+const Home: NextPage<Props> = ({ theme, storeList }): ReactElement => {
+  const { data } = useGetStoreList(storeList)
+
   const cssVariable = css`
     :root {
       --main: ${theme.main_color};
@@ -20,7 +25,7 @@ const Home: NextPage<Props> = ({ theme }): ReactElement => {
   return (
     <div>
       <Global styles={cssVariable} />
-      <Header theme={theme} />
+      <Header name={theme.name} />
       <MainLogo mainLogo={theme.main_logo} />
     </div>
   )
@@ -28,9 +33,11 @@ const Home: NextPage<Props> = ({ theme }): ReactElement => {
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const theme = await fetchTheme(req.headers.referer)
+  const storeList = await fetchStoreList(process.env.NEXT_PUBLIC_BRAND_ID || '')
   return {
     props: {
       theme,
+      storeList,
     },
   }
 }

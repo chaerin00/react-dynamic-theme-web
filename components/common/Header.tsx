@@ -1,17 +1,15 @@
 import styled from '@emotion/styled'
 import { MenuIcon } from '@assets/common'
-import { Theme } from 'lib/api/theme'
 
 type HeaderProps = {
-  theme: Theme
+  name: string
 }
 
-const Header = ({ theme }: HeaderProps) => {
-  console.log(theme)
+const Header = ({ name }: HeaderProps) => {
   return (
     <HeaderWrap>
       <MenuIcon color="var(--white)" />
-      <Logo>쏘크라테스 떡볶이</Logo>
+      <Logo>{name}</Logo>
     </HeaderWrap>
   )
 }

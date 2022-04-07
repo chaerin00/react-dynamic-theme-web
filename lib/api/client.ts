@@ -1,21 +1,11 @@
 import axios from 'axios'
 
-const headers =
-  typeof window !== 'undefined'
-    ? {
-        'Content-Type': 'application/json',
-        'x-auth-token': localStorage.getItem('x-access-token') || '',
-      }
-    : {
-        'Content-Type': 'application/json',
-        'x-auth-token': '',
-      }
+axios.defaults.headers.common = {
+  Authorization: `Bearer ${process.env.NEXT_PUBLIC_TEST_ACCESS_TOKEN}`,
+}
 
 const client = axios.create({
-  baseURL:
-    // process.env.NODE_ENV === 'development' ? '/' : 'https://takeus.shop',
-    'https://takeus.shop',
-  headers,
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
 })
 
 export default client

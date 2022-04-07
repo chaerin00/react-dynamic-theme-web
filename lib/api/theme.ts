@@ -1,4 +1,4 @@
-import axios from 'axios'
+import client from './client'
 
 export type Theme = {
   id: string
@@ -38,14 +38,11 @@ export const fetchTheme = async (referer: string | undefined) => {
     isLocalhost && referer ? process.env.NEXT_PUBLIC_TEST_URL : referer
 
   try {
-    const { data } = await axios.get<Theme>(
-      process.env.NEXT_PUBLIC_THEME_API as string,
-      {
-        headers: {
-          referer: validReferer as string,
-        },
-      }
-    )
+    const { data } = await client.get<Theme>('web/theme', {
+      headers: {
+        referer: validReferer as string,
+      },
+    })
     return data
   } catch (e) {
     return Promise.reject(e)
