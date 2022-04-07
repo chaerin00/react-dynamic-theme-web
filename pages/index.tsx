@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import { ReactElement, useEffect } from 'react'
+import { ReactElement } from 'react'
 import { Header } from '@components/common'
 import { fetchTheme, Theme } from 'lib/api/theme'
 import { GetServerSideProps } from 'next'
@@ -20,6 +20,7 @@ const Home: NextPage<Props> = ({ theme }): ReactElement => {
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const theme = await fetchTheme(req.headers.referer)
+
   return {
     props: {
       theme,
