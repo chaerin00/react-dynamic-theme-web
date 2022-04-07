@@ -34,20 +34,22 @@ export type Theme = {
   }
 }
 
-export const fetchTheme = async (referer: string) => {
+export const fetchTheme = async (referer: string | undefined) => {
+  const isLocalhost = referer?.includes('localhost')
+  const validReferer =
+    isLocalhost && referer ? process.env.NEXT_PUBLIC_TEST_URL : referer
+
   try {
-    console.log(axios.request)
     const { data } = await axios.get<Theme>(
       process.env.NEXT_PUBLIC_THEME_API as string,
       {
         headers: {
-          referer,
+          referer: validReferer as string,
         },
       }
     )
     return data
   } catch (e) {
-    console.log('[FAIL] FETCH THEME DATA', e)
     return Promise.reject(e)
   }
 }
