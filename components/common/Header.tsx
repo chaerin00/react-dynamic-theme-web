@@ -2,17 +2,26 @@ import styled from '@emotion/styled'
 import { MenuIcon } from '@assets/common'
 import Router from 'next/router'
 import { useState } from 'react'
+import { Theme } from 'lib/api/theme'
 
-const Header = () => {
+type HeaderProps = {
+  theme: Theme
+}
+
+const Header = ({ theme }: HeaderProps) => {
   const [isLogin, setIsLogin] = useState<boolean>(
     typeof window !== 'undefined' && !!localStorage.getItem('x-access-token')
   )
+
   const clickLogin = () => {
     Router.push('/login')
   }
+
   const clickLogo = () => {
     Router.push('/')
   }
+
+  console.log(theme)
   return (
     <HeaderWrap>
       <MenuIcon />

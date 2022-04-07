@@ -1,11 +1,19 @@
 import type { NextPage } from 'next'
 import { ReactElement } from 'react'
 import { Header } from '@components/common'
-import { fetchTheme } from 'lib/api/theme'
+import { fetchTheme, Theme } from 'lib/api/theme'
 import { GetServerSideProps } from 'next'
 
-const Home: NextPage = (): ReactElement => {
-  return <Header />
+type Props = {
+  theme: Theme
+}
+
+const Home: NextPage<Props> = ({ theme }): ReactElement => {
+  return (
+    <div>
+      <Header theme={theme} />
+    </div>
+  )
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
@@ -14,9 +22,10 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     ? process.env.NEXT_PUBLIC_TEST_URL
     : req.headers.referer
   const result = await fetchTheme(referer || '')
-  console.log(result)
   return {
-    props: {},
+    props: {
+      theme: result,
+    },
   }
 }
 
