@@ -1,33 +1,51 @@
 import React, { useReducer, useContext, createContext, Dispatch } from 'react'
+import { Theme } from 'lib/api/theme'
 
-type State = {
-  count: number
-  text: string
-}
-
-type Action =
-  | { type: 'SET_COUNT'; count: number }
-  | { type: 'SET_TEXT'; text: string }
+type Action = { type: 'SET_THEME'; theme: Theme }
 
 type ThemeDispatch = Dispatch<Action>
 
-const ThemeStateContext = createContext<State>({
-  count: 0,
-  text: '',
-})
+const initialData: Theme = {
+  id: '',
+  name: '',
+  title: '',
+  description: '',
+  keywords: '',
+  author: '',
+  og_title: '',
+  og_description: '',
+  og_image: '',
+  gtm: '',
+  bootpay_app_id: '',
+  kakao_app_id: '',
+  kakao_share_template_id: '',
+  kakao_channel: '',
+  kakao_channel_image: '',
+  main_logo: '',
+  sub_logo: '',
+  brand_character: '',
+  main_color: '',
+  sub_color: '',
+  representative_name: '',
+  registration_number: '',
+  business_report_number: '',
+  address: '',
+  email: '',
+  phone: '',
+  administrator: 0,
+  default_menu_store_id: '',
+  footer_brand_name: '',
+}
+
+const ThemeStateContext = createContext<Theme>(initialData)
 const ThemeDispatchContext = createContext<ThemeDispatch | null>(null)
 
-function reducer(state: State, action: Action): State {
+function reducer(state: Theme, action: Action): Theme {
   switch (action.type) {
-    case 'SET_COUNT':
+    case 'SET_THEME':
       return {
         ...state,
-        count: action.count,
-      }
-    case 'SET_TEXT':
-      return {
-        ...state,
-        text: action.text,
+        ...action.theme,
       }
     default:
       throw new Error('Unhandled action')
@@ -35,10 +53,7 @@ function reducer(state: State, action: Action): State {
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [state, dispatch] = useReducer(reducer, {
-    count: 0,
-    text: 'hello',
-  })
+  const [state, dispatch] = useReducer(reducer, initialData)
 
   return (
     <ThemeStateContext.Provider value={state}>
@@ -51,12 +66,12 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
 export function useThemeState() {
   const state = useContext(ThemeStateContext)
-  if (!state) throw new Error('Cannot find ThemeProvider') // 유효하지 않을땐 에러를 발생
+  if (!state) throw new Error('Cannot find ThemeProvider')
   return state
 }
 
 export function useThemeDispatch() {
   const dispatch = useContext(ThemeDispatchContext)
-  if (!dispatch) throw new Error('Cannot find ThemeProvider') // 유효하지 않을땐 에러를 발생
+  if (!dispatch) throw new Error('Cannot find ThemeProvider')
   return dispatch
 }
