@@ -1,9 +1,5 @@
-import React, { useReducer, useContext, createContext, Dispatch } from 'react'
+import React, { useContext, createContext } from 'react'
 import { Theme } from 'lib/api/theme'
-
-type Action = { type: 'SET_THEME'; theme: Theme }
-
-type ThemeDispatch = Dispatch<Action>
 
 const initialData: Theme = {
   id: '',
@@ -38,28 +34,17 @@ const initialData: Theme = {
 }
 
 const ThemeStateContext = createContext<Theme>(initialData)
-const ThemeDispatchContext = createContext<ThemeDispatch | null>(null)
 
-function reducer(state: Theme, action: Action): Theme {
-  switch (action.type) {
-    case 'SET_THEME':
-      return {
-        ...state,
-        ...action.theme,
-      }
-    default:
-      throw new Error('Unhandled action')
-  }
-}
-
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [state, dispatch] = useReducer(reducer, initialData)
-
+export function ThemeProvider({
+  children,
+  value,
+}: {
+  children: React.ReactNode
+  value: Theme
+}) {
   return (
-    <ThemeStateContext.Provider value={state}>
-      <ThemeDispatchContext.Provider value={dispatch}>
-        {children}
-      </ThemeDispatchContext.Provider>
+    <ThemeStateContext.Provider value={value}>
+      {children}
     </ThemeStateContext.Provider>
   )
 }
@@ -68,10 +53,4 @@ export function useThemeState() {
   const state = useContext(ThemeStateContext)
   if (!state) throw new Error('Cannot find ThemeProvider')
   return state
-}
-
-export function useThemeDispatch() {
-  const dispatch = useContext(ThemeDispatchContext)
-  if (!dispatch) throw new Error('Cannot find ThemeProvider')
-  return dispatch
 }
