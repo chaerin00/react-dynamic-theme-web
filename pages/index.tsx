@@ -37,9 +37,7 @@ const Home: NextPage<Props> = ({ theme, storeList }): ReactElement => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { req } = context
-  console.log(context)
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const theme = await fetchTheme(req.headers.referer)
   const storeList = await fetchStoreList(process.env.NEXT_PUBLIC_BRAND_ID || '')
   return {
