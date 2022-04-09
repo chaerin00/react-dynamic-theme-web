@@ -1,18 +1,21 @@
+import { useThemeState } from '@contexts/ThemeContext'
 import Image from 'next/image'
 
-type mainLogoProps = {
-  mainLogo: string
-}
+const MainLogo = () => {
+  const { main_logo } = useThemeState()
 
-const MainLogo = ({ mainLogo }: mainLogoProps) => {
   return (
-    <Image
-      width={320}
-      height={128}
-      layout="responsive"
-      src={mainLogo}
-      alt="main-logo"
-    />
+    <>
+      {main_logo && (
+        <Image
+          width={320}
+          height={128}
+          layout="responsive"
+          src={main_logo}
+          alt="main-logo"
+        />
+      )}
+    </>
   )
 }
 

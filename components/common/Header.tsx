@@ -1,11 +1,9 @@
 import styled from '@emotion/styled'
 import { MenuIcon } from '@assets/common'
+import { useThemeState } from '@contexts/ThemeContext'
 
-type HeaderProps = {
-  name: string
-}
-
-const Header = ({ name }: HeaderProps) => {
+const Header = () => {
+  const { name } = useThemeState()
   return (
     <HeaderWrap>
       <MenuIcon color="var(--white)" />
