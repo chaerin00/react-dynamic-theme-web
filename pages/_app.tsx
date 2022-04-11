@@ -1,10 +1,12 @@
-import type { AppProps, AppContext } from 'next/app'
-import { ReactElement } from 'react'
 import { Global } from '@emotion/react'
-import globalStyle from 'styles/globalStyle'
+import type { AppProps, AppContext } from 'next/app'
+import Head from 'next/head'
+import { ReactElement } from 'react'
 import { QueryClientProvider, QueryClient } from 'react-query'
+
 import { ThemeProvider } from '@contexts/ThemeContext'
 import { fetchTheme } from 'lib/api/theme'
+import globalStyle from 'styles/globalStyle'
 
 function MyApp({ Component, pageProps }: AppProps): ReactElement {
   const queryClient = new QueryClient()

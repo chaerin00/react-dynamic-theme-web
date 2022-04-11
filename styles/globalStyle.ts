@@ -1,4 +1,5 @@
 import { css } from '@emotion/react'
+
 import palette from './palette'
 
 const globalStyle = css`

@@ -1,4 +1,5 @@
 import { useQuery } from 'react-query'
+
 import { fetchTheme, Theme } from 'lib/api/theme'
 
 export const useGetTheme = (initialData: Theme) => {

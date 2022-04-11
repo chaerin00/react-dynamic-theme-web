@@ -1,11 +1,12 @@
+import { Global, css } from '@emotion/react'
 import type { NextPage, GetServerSideProps } from 'next'
 import { ReactElement } from 'react'
+
 import { Header } from '@components/common'
 import MainLogo from '@components/store/list/MainLogo'
-import { Global, css } from '@emotion/react'
-import { fetchStoreList, Store } from 'lib/api/store'
-import { useGetStoreList } from 'hooks/query/useGetStoreList'
 import { useThemeState } from '@contexts/ThemeContext'
+import { useGetStoreList } from 'hooks/query/useGetStoreList'
+import { fetchStoreList, Store } from 'lib/api/store'
 
 type Props = {
   storeList: Store[]

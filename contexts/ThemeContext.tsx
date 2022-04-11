@@ -1,4 +1,5 @@
 import React, { useContext, createContext } from 'react'
+
 import { Theme } from 'lib/api/theme'
 
 const initialData: Theme = {
