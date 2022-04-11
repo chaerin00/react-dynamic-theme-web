@@ -1,14 +1,21 @@
 import styled from '@emotion/styled'
+import { useState } from 'react'
 
 import { MenuIcon } from '@assets/common'
+import SideMenu from '@components/common/SideMenu'
 import { useThemeState } from '@contexts/ThemeContext'
 
 const Header = () => {
+  const [isSideMenuOpen, setIsSideMenuOpen] = useState(false)
   const { name } = useThemeState()
   return (
     <HeaderWrap>
-      <MenuIcon color="var(--white)" />
+      <MenuIcon color="var(--white)" onClick={() => setIsSideMenuOpen(true)} />
       <Logo>{name}</Logo>
+      <SideMenu
+        isOpen={isSideMenuOpen}
+        onClose={() => setIsSideMenuOpen(false)}
+      />
     </HeaderWrap>
   )
 }
