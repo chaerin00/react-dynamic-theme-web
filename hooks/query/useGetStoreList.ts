@@ -1,4 +1,5 @@
 import { useQuery } from 'react-query'
+
 import { fetchStoreList, Store } from 'lib/api/store'
 
 export const useGetStoreList = (initialData: Store[]) => {

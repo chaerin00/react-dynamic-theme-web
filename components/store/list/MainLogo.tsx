@@ -1,5 +1,6 @@
-import { useThemeState } from '@contexts/ThemeContext'
 import Image from 'next/image'
+
+import { useThemeState } from '@contexts/ThemeContext'
 
 const MainLogo = () => {
   const { main_logo } = useThemeState()
