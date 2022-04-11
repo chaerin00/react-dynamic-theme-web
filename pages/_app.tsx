@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }: AppProps): ReactElement {
         <meta name="og:image" content={theme.og_image} />
         <link rel="icon" type="image/x-icon" href={theme.sub_logo} />
       </Head>
-      <ThemeProvider value={pageProps.theme}>
+      <ThemeProvider value={theme}>
         <QueryClientProvider client={queryClient}>
           <Global styles={globalStyle} />
           <Component {...pageProps} />
