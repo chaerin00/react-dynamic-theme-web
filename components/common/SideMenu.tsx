@@ -1,6 +1,8 @@
 import styled from '@emotion/styled'
+import { useEffect } from 'react'
 
 import { CloseIcon } from '@assets/common'
+import { useThemeState } from '@contexts/ThemeContext'
 
 type SideMenuProps = {
   readonly isOpen: boolean
@@ -8,13 +10,28 @@ type SideMenuProps = {
 }
 
 const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
+  const { kakao_app_id } = useThemeState()
+
+  useEffect(() => {
+    window.Kakao.init(kakao_app_id)
+  }, [kakao_app_id])
+
+  const login = () => {
+    const redirectUri = `${window.location.origin}/kakaooauth`
+    window.Kakao.Auth.authorize({
+      redirectUri,
+    })
+  }
+
   return (
     <SideMenuWrapper className={isOpen ? 'open' : 'close'}>
       <button className="close-button" onClick={onClose}>
         <CloseIcon />
       </button>
       <header>
-        <button className="login-button">간편 로그인 / 회원가입</button>
+        <button className="login-button" onClick={login}>
+          간편 로그인 / 회원가입
+        </button>
       </header>
     </SideMenuWrapper>
   )
